@@ -1,0 +1,34 @@
+include mixins/_navigation
+doctype html
+html
+	head
+		title= `${title} | ${h.siteName}`
+		link(rel='stylesheet', href='/dist/style.css')
+		link(rel="shortcut icon" type="image/png" href="/images/icons/doughnut.png")
+		meta(name="viewport" content="width=device-width, initial-scale=1")
+	body
+		header
+			+navigation
+		section.hero.is-dark
+			.hero-body
+				.container
+					h1.title= title
+		block messages
+			if locals.flashes
+					.container
+						.flash-messages
+							- const categories = Object.keys(locals.flashes)
+							each category in categories
+								each message in flashes[category]
+									.notification(class=`is-${category}`)
+										p.flash__text!= message
+										button.delete(onClick="this.parentElement.remove()")
+		section.section
+			.container
+					block content
+		footer.footer
+			.container
+				.content.has-text-centered
+					p This is the footer
+	block scripts
+		script(src="/dist/App.bundle.js")

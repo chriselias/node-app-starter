@@ -1,0 +1,34 @@
+mixin navigation()
+
+	nav.navbar.is-transparent
+		.navbar-brand
+			a.navbar-item(href="/") devlinks.io
+			.button.navbar-burger.burger(data-target="navMenu")
+				span
+				span
+				span
+		#navMenu.navbar-menu
+			.navbar-end
+				a.navbar-item(href="/page") Default Page
+				if user
+					.navbar-item
+						p.control
+							a.button.is-primary(href="/profile") Profile
+					.navbar-item.has-dropdown.is-hoverable
+						.navbar-link
+							img.avatar(src=user.gravatar + 'd=retro')
+							span=user.name
+						.navbar-dropdown
+							a.navbar-item(href="/account") Profile
+							a.navbar-item(href="/logout") Logout
+						
+
+
+				else
+					.navbar-item
+						p.control
+							a.button.is-primary(href="/register") Register
+					.navbar-item
+						p.control
+							a.button.is-primary.is-outlined(href="/login") Login
+				

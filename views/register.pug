@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    .columns
+        .column.is-half
+            form(action="/register" method="POST")
+                .field
+                    label.label(for="name") Username
+                    input.input(type="text" name="name")
+                .field
+                    label.label(for="email") Email Address
+                    input.input(type="email" name="email")
+                .field
+                    label.label(for="password") Password
+                    input.input(type="password" name="password")
+                .field
+                    label.label(for="password-confirm") Password Confirm
+                    input.input(type="password" name="password-confirm")
+                .field
+                    input.button.is-primary(type="submit")
+                    
